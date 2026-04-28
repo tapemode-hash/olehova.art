@@ -27,7 +27,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
           <div
             className="w-full h-full"
@@ -41,7 +41,7 @@ export default async function HomePage() {
           />
         </div>
 
-        <div className="page-container relative z-10 py-24">
+        <div className="page-container relative z-10 py-12">
           <div className="max-w-3xl">
             <p
               className="text-gold tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in"
@@ -71,11 +71,11 @@ export default async function HomePage() {
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-in">
-              <Link href="/portfolio" className="btn-primary">
-                Портфолио
-              </Link>
               <Link href="/about" className="btn-gold">
                 О художнике
+              </Link>
+              <Link href="/portfolio" className="btn-primary">
+                Портфолио
               </Link>
             </div>
           </div>
@@ -86,6 +86,41 @@ export default async function HomePage() {
           style={{ background: 'linear-gradient(to bottom, transparent, #C9A84C, transparent)' }}
           aria-hidden="true"
         />
+      </section>
+
+      {/* О художнике — тизер */}
+      <section className="py-20 bg-parchment-dark">
+        <div className="page-container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="aspect-[3/4] bg-parchment border border-gold/30 flex items-center justify-center">
+                <p
+                  className="text-gold/30 text-8xl select-none"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  aria-hidden="true"
+                >
+                  ❧
+                </p>
+              </div>
+              <div
+                className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 -z-10"
+                aria-hidden="true"
+              />
+            </div>
+            <div>
+              <OrnamentDivider text="✦" />
+              <h2 className="section-title mb-6">О художнике</h2>
+              <p className="mb-8" style={{ fontFamily: "'Lora', Georgia, serif", color: '#3D2B1F', lineHeight: '1.8' }}>
+                Анастасия Олехова — художник и иллюстратор, работающий в духе
+                старинной книжной иллюстрации. В её работах живут персонажи
+                из другого времени — задумчивые, хрупкие и бесконечно живые.
+              </p>
+              <Link href="/about" className="btn-primary">
+                Читать далее
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Избранные работы */}
@@ -162,7 +197,7 @@ export default async function HomePage() {
       )}
 
       {/* Куклы — тизер */}
-      <section className="py-20 bg-parchment-dark">
+      <section className="py-20">
         <div className="page-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
@@ -178,7 +213,7 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-parchment border border-gold/30 flex items-center justify-center">
+              <div className="aspect-square bg-parchment-dark border border-gold/30 flex items-center justify-center">
                 <p
                   className="text-gold/40 text-8xl select-none"
                   style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
@@ -197,7 +232,7 @@ export default async function HomePage() {
       </section>
 
       {/* Цитата */}
-      <section className="py-20">
+      <section className="py-20 bg-parchment-dark">
         <div className="page-container text-center max-w-2xl mx-auto">
           <OrnamentDivider />
           <blockquote
@@ -207,8 +242,8 @@ export default async function HomePage() {
             Искусство — это язык, на котором душа разговаривает с вечностью
           </blockquote>
           <OrnamentDivider />
-          <Link href="/about" className="btn-primary mt-4 inline-block">
-            Об Анастасии
+          <Link href="/contact" className="btn-primary mt-4 inline-block">
+            Написать мне
           </Link>
         </div>
       </section>

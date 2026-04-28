@@ -64,14 +64,21 @@ export default function ContactPage() {
                     Социальные сети
                   </p>
                   <div className="flex flex-col gap-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                    <a href="#" className="text-ink hover:text-crimson transition-colors">
-                      Instagram
+                    <a
+                      href="https://www.instagram.com/olehova_anastasiya?igsh=MW9xNG9hbHZxc2ZwZA=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink hover:text-crimson transition-colors"
+                    >
+                      Instagram — @olehova_anastasiya
                     </a>
-                    <a href="#" className="text-ink hover:text-crimson transition-colors">
-                      ВКонтакте
-                    </a>
-                    <a href="#" className="text-ink hover:text-crimson transition-colors">
-                      Telegram
+                    <a
+                      href="https://vk.com/id682236515"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink hover:text-crimson transition-colors"
+                    >
+                      ВКонтакте — @id682236515
                     </a>
                   </div>
                 </div>
