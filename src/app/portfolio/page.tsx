@@ -3,6 +3,8 @@ import { SectionHeader } from '@/components/ui/Ornament'
 import { PortfolioFilter } from '@/components/ui/PortfolioFilter'
 import type { Metadata } from 'next'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Портфолио',
   description: 'Живопись, акварель, графика и смешанные техники — работы Анастасии Олеховой.',
