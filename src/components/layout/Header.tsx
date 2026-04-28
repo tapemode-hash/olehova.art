@@ -31,8 +31,8 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-parchment/95 backdrop-blur-sm shadow-[0_1px_0_0_rgba(201,168,76,0.3)]'
+        scrolled || menuOpen
+          ? 'bg-parchment shadow-[0_1px_0_0_rgba(201,168,76,0.3)]'
           : 'bg-transparent'
       }`}
     >
