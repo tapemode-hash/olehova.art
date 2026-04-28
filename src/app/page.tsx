@@ -42,7 +42,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden">
         {/* Картина — полная ширина сверху */}
         {heroData?.image && (
-          <div className="relative w-full" style={{ height: '60vh' }}>
+          <div className="relative w-full" style={{ height: '40vh' }}>
             <Image
               src={urlFor(heroData.image).width(1600).height(900).url()}
               alt="Работа Анастасии Олеховой"
