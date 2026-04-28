@@ -16,7 +16,7 @@ async function getFeaturedArtworks() {
 async function getHeroImage() {
   try {
     return await client.fetch(
-      `*[_type == "artwork" && slug.current == "annelochek"][0] { image }`
+      `*[_type == "artwork" && slug.current == "angelochek"][0] { image }`
     )
   } catch {
     return null
