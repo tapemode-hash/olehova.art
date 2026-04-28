@@ -18,7 +18,7 @@ async function getArtwork(slug: string) {
   try {
     return await client.fetch(
       `*[_type == "artwork" && slug.current == $slug][0] {
-        _id, title, slug, technique, year, dimensions, image, description, featured
+        _id, title, slug, technique, year, dimensions, image, description, featured, price, available
       }`,
       { slug }
     )
@@ -125,6 +125,28 @@ export default async function ArtworkPage({ params }: { params: { slug: string }
                   {techniqueLabels[artwork.technique] ?? artwork.technique}
                 </dd>
               </div>
+              {artwork.price && (
+                <div className="flex gap-4">
+                  <dt className="text-sm text-gold tracking-widest uppercase w-28 shrink-0"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                    Стоимость
+                  </dt>
+                  <dd className="text-crimson text-lg" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                    {artwork.price.toLocaleString('ru-RU')} ₽
+                  </dd>
+                </div>
+              )}
+              {artwork.available === false && (
+                <div className="flex gap-4">
+                  <dt className="text-sm text-gold tracking-widest uppercase w-28 shrink-0"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                    Статус
+                  </dt>
+                  <dd className="text-ink-light" style={{ fontFamily: "'Lora', Georgia, serif" }}>
+                    Продана
+                  </dd>
+                </div>
+              )}
             </dl>
 
             {artwork.description && (
@@ -136,11 +158,16 @@ export default async function ArtworkPage({ params }: { params: { slug: string }
               </p>
             )}
 
-            <div className="mt-10">
-              <Link href="/contact" className="btn-primary">
-                Связаться по поводу работы
-              </Link>
-            </div>
+            {artwork.available !== false && (
+              <div className="mt-10">
+                <Link
+                  href={`/contact?work=${encodeURIComponent(artwork.title)}`}
+                  className="btn-primary"
+                >
+                  Связаться по поводу работы
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

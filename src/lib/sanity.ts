@@ -21,16 +21,16 @@ export function urlFor(source: SanityImageSource) {
 
 export const queries = {
   featuredArtworks: `*[_type == "artwork" && featured == true] | order(order asc) {
-    _id, title, slug, technique, year, image, description
+    _id, title, slug, technique, year, image, description, price, available
   }`,
 
   allArtworks: `*[_type == "artwork"] | order(order asc) {
-    _id, title, slug, technique, year, dimensions, image, description, featured
+    _id, title, slug, technique, year, dimensions, image, description, featured, price, available
   }`,
 
   artworksByTechnique: (technique: string) =>
     `*[_type == "artwork" && technique == "${technique}"] | order(order asc) {
-      _id, title, slug, technique, year, dimensions, image, description
+      _id, title, slug, technique, year, dimensions, image, description, price, available
     }`,
 
   allDolls: `*[_type == "doll"] | order(order asc) {

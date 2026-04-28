@@ -35,6 +35,8 @@ interface Artwork {
   dimensions: string
   image: object
   description: string
+  price?: number
+  available?: boolean
 }
 
 export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
@@ -78,43 +80,72 @@ export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((artwork) => (
-            <Link
-              key={artwork._id}
-              href={`/portfolio/${artwork.slug.current}`}
-              className="card-artwork group block"
-            >
-              <div className="relative aspect-[3/4] overflow-hidden bg-parchment-dark">
-                {artwork.image ? (
-                  <Image
-                    src={urlFor(artwork.image).width(600).height(800).url()}
-                    alt={artwork.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gold/30 text-5xl select-none"
-                    aria-hidden="true">
-                    ❧
-                  </div>
-                )}
-                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/15 transition-colors duration-300" />
-              </div>
-              <div className="p-4">
-                <h3
-                  className="text-xl text-ink group-hover:text-crimson transition-colors"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                >
-                  {artwork.title}
-                </h3>
+            <div key={artwork._id} className="card-artwork group flex flex-col">
+              <Link href={`/portfolio/${artwork.slug.current}`} className="block">
+                <div className="relative aspect-[3/4] overflow-hidden bg-parchment-dark">
+                  {artwork.image ? (
+                    <Image
+                      src={urlFor(artwork.image).width(600).height(800).url()}
+                      alt={artwork.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gold/30 text-5xl select-none"
+                      aria-hidden="true">
+                      ❧
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/15 transition-colors duration-300" />
+                </div>
+              </Link>
+              <div className="p-4 flex flex-col flex-1">
+                <Link href={`/portfolio/${artwork.slug.current}`}>
+                  <h3
+                    className="text-xl text-ink group-hover:text-crimson transition-colors"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  >
+                    {artwork.title}
+                  </h3>
+                </Link>
                 <p className="text-sm text-ink-light mt-1"
                   style={{ fontFamily: "'Lora', Georgia, serif" }}>
                   {techniqueLabels[artwork.technique] ?? artwork.technique}
                   {artwork.year ? ` · ${artwork.year}` : ''}
                   {artwork.dimensions ? ` · ${artwork.dimensions} см` : ''}
                 </p>
+                <div className="mt-auto pt-4 flex items-center justify-between gap-3">
+                  {artwork.price ? (
+                    <span
+                      className="text-lg text-crimson"
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      {artwork.price.toLocaleString('ru-RU')} ₽
+                    </span>
+                  ) : (
+                    <span />
+                  )}
+                  {artwork.available !== false && (
+                    <Link
+                      href={`/contact?work=${encodeURIComponent(artwork.title)}`}
+                      className="text-xs tracking-widest uppercase border border-gold/50 text-gold hover:bg-gold hover:text-parchment transition-all duration-200 px-3 py-1.5"
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      Связаться
+                    </Link>
+                  )}
+                  {artwork.available === false && (
+                    <span
+                      className="text-xs tracking-widest uppercase text-ink-light border border-ink/20 px-3 py-1.5"
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      Продана
+                    </span>
+                  )}
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

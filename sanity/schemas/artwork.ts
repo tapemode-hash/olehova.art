@@ -60,6 +60,17 @@ export const artwork = defineType({
       rows: 4,
     }),
     defineField({
+      name: 'price',
+      title: 'Стоимость (руб.)',
+      type: 'number',
+    }),
+    defineField({
+      name: 'available',
+      title: 'Доступна для приобретения',
+      type: 'boolean',
+      initialValue: true,
+    }),
+    defineField({
       name: 'featured',
       title: 'Показать на главной',
       type: 'boolean',
