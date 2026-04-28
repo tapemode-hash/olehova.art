@@ -6,10 +6,10 @@ import { useState, useEffect } from 'react'
 
 const navItems = [
   { href: '/', label: 'Главная' },
+  { href: '/about', label: 'О художнике' },
   { href: '/portfolio', label: 'Портфолио' },
   { href: '/dolls', label: 'Куклы' },
   { href: '/exhibitions', label: 'Выставки' },
-  { href: '/about', label: 'О художнике' },
   { href: '/contact', label: 'Контакт' },
 ]
 

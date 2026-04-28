@@ -29,10 +29,10 @@ export function Footer() {
             </h4>
             <nav className="flex flex-col gap-2">
               {[
+                { href: '/about', label: 'О художнике' },
                 { href: '/portfolio', label: 'Портфолио' },
                 { href: '/dolls', label: 'Куклы' },
                 { href: '/exhibitions', label: 'Выставки' },
-                { href: '/about', label: 'О художнике' },
                 { href: '/contact', label: 'Контакт' },
               ].map((item) => (
                 <Link
