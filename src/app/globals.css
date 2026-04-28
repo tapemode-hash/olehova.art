@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F5F0E8;
+    color: #1C1410;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background-color: #C9A84C;
+    color: #1C1410;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F5F0E8;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C9A84C;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .ornament {
+    display: inline-block;
+    color: #C9A84C;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    user-select: none;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    color: #1C1410;
+    letter-spacing: 0.04em;
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #C9A84C;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.3em;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C9A84C, transparent);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.625rem 2rem;
+    background: transparent;
+    border: 1px solid #8B2E2E;
+    color: #8B2E2E;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background: #8B2E2E;
+    color: #F5F0E8;
+  }
+
+  .btn-gold {
+    display: inline-block;
+    padding: 0.625rem 2rem;
+    background: transparent;
+    border: 1px solid #C9A84C;
+    color: #C9A84C;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-gold:hover {
+    background: #C9A84C;
+    color: #1C1410;
+  }
+
+  .card-artwork {
+    position: relative;
+    overflow: hidden;
+    background: #E8E0CC;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .card-artwork:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(28, 20, 16, 0.15);
+  }
+
+  .card-artwork::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 0.3s ease;
+  }
+
+  .card-artwork:hover::before {
+    border-color: rgba(201, 168, 76, 0.8);
+  }
+
+  .nav-link {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1C1410;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C9A84C;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #8B2E2E;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: #8B2E2E;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .prose-art {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #3D2B1F;
+  }
+
+  .prose-art p {
+    margin-bottom: 1.25em;
+  }
+}
+
+.frame-ornate {
+  position: relative;
+  padding: 2rem;
+}
+
+.frame-ornate::before,
+.frame-ornate::after {
+  content: '';
+  position: absolute;
+  border: 1px solid #C9A84C;
+  pointer-events: none;
+}
+
+.frame-ornate::before {
+  inset: 0;
+}
+
+.frame-ornate::after {
+  inset: 6px;
+  opacity: 0.5;
+}
+
+.hr-ornate {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #C9A84C 30%, #C9A84C 70%, transparent);
+  margin: 2rem 0;
+}
