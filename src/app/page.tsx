@@ -13,6 +13,16 @@ async function getFeaturedArtworks() {
   }
 }
 
+async function getHeroImage() {
+  try {
+    return await client.fetch(
+      `*[_type == "artwork" && slug.current == "annelochek"][0] { image }`
+    )
+  } catch {
+    return null
+  }
+}
+
 const techniqueLabels: Record<string, string> = {
   watercolor: 'Акварель',
   oil: 'Масло',
@@ -24,7 +34,7 @@ const techniqueLabels: Record<string, string> = {
 }
 
 export default async function HomePage() {
-  const artworks = await getFeaturedArtworks()
+  const [artworks, heroData] = await Promise.all([getFeaturedArtworks(), getHeroImage()])
 
   return (
     <>
@@ -44,50 +54,74 @@ export default async function HomePage() {
         </div>
 
         <div className="page-container relative z-10 py-12">
-          <div className="max-w-3xl">
-            <p
-              className="text-gold tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              Художник · Иллюстратор
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Текст */}
+            <div>
+              <p
+                className="text-gold tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              >
+                Художник · Иллюстратор
+              </p>
 
-            <h1
-              className="text-6xl md:text-8xl lg:text-9xl text-ink mb-8 animate-slide-up"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontWeight: 300,
-                lineHeight: 1.05,
-              }}
-            >
-              Анастасия
-              <br />
-              <em className="text-crimson not-italic">Олехова</em>
-            </h1>
+              <h1
+                className="text-6xl md:text-8xl text-ink mb-8 animate-slide-up"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontWeight: 300,
+                  lineHeight: 1.05,
+                }}
+              >
+                Анастасия
+                <br />
+                <em className="text-crimson not-italic">Олехова</em>
+              </h1>
 
-            <p
-              className="text-xl md:text-2xl text-ink-light italic mb-12 max-w-xl animate-slide-up"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              «Каждая работа — это путешествие в мир, где время течёт иначе»
-            </p>
+              <p
+                className="text-xl md:text-2xl text-ink-light italic mb-12 max-w-xl animate-slide-up"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              >
+                «Каждая работа — это путешествие в мир, где время течёт иначе»
+              </p>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in">
-              <Link href="/about" className="btn-gold">
-                О художнике
-              </Link>
-              <Link href="/portfolio" className="btn-primary">
-                Портфолио
-              </Link>
+              <div className="flex flex-wrap gap-4 animate-fade-in">
+                <Link href="/about" className="btn-gold">
+                  О художнике
+                </Link>
+                <Link href="/portfolio" className="btn-primary">
+                  Портфолио
+                </Link>
+              </div>
             </div>
+
+            {/* Картина */}
+            {heroData?.image && (
+              <div className="relative flex justify-center lg:justify-end animate-fade-in">
+                <div className="relative w-72 md:w-80 lg:w-96">
+                  <div className="relative aspect-[3/4] overflow-hidden border border-gold/30">
+                    <Image
+                      src={urlFor(heroData.image).width(800).height(1067).url()}
+                      alt="Работа Анастасии Олеховой"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 320px, 384px"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/10 to-transparent" />
+                  </div>
+                  <div
+                    className="absolute -bottom-3 -right-3 w-full h-full border border-gold/20 -z-10"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute -top-3 -left-3 w-full h-full border border-gold/10 -z-10"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
-
-        <div
-          className="absolute right-0 top-0 bottom-0 w-px opacity-20"
-          style={{ background: 'linear-gradient(to bottom, transparent, #C9A84C, transparent)' }}
-          aria-hidden="true"
-        />
       </section>
 
       {/* О художнике — тизер */}
