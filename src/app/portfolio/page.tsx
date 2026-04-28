@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Портфолио',
-  description: 'Живопись, акварель, графика и смешанные техники — работы Анастасии Ольховой.',
+  description: 'Живопись, акварель, графика и смешанные техники — работы Анастасии Олеховой.',
 }
 
 async function getArtworks() {

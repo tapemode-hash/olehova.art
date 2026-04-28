@@ -6,7 +6,7 @@ import { PortableText } from '@portabletext/react'
 
 export const metadata: Metadata = {
   title: 'О художнике',
-  description: 'Биография и художественное заявление Анастасии Ольховой.',
+  description: 'Биография и художественное заявление Анастасии Олеховой.',
 }
 
 async function getAbout() {
@@ -66,7 +66,7 @@ export default async function AboutPage() {
                   className="text-5xl text-ink mb-2"
                   style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}
                 >
-                  {about.name ?? 'Анастасия Ольхова'}
+                  {about.name ?? 'Анастасия Олехова'}
                 </h2>
                 {about.tagline && (
                   <p

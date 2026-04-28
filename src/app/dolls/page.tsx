@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Куклы',
-  description: 'Авторские куклы ручной работы Анастасии Ольховой.',
+  description: 'Авторские куклы ручной работы Анастасии Олеховой.',
 }
 
 const materialLabels: Record<string, string> = {

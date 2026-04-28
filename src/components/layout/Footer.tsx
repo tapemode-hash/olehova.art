@@ -11,7 +11,7 @@ export function Footer() {
               className="text-3xl text-ink mb-1"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}
             >
-              Анастасия Ольхова
+              Анастасия Олехова
             </p>
             <p className="text-gold text-sm tracking-widest uppercase"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
@@ -71,7 +71,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-light"
           style={{ fontFamily: "'Lora', Georgia, serif" }}>
-          <p>© {new Date().getFullYear()} Анастасия Ольхова. Все права защищены.</p>
+          <p>© {new Date().getFullYear()} Анастасия Олехова. Все права защищены.</p>
           <p className="text-gold/60 tracking-widest" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
             ✦ ✦ ✦
           </p>

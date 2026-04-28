@@ -9,7 +9,7 @@ export const about = defineType({
       name: 'name',
       title: 'Имя',
       type: 'string',
-      initialValue: 'Анастасия Ольхова',
+      initialValue: 'Анастасия Олехова',
     }),
     defineField({
       name: 'tagline',

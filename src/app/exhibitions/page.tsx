@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Выставки',
-  description: 'Персональные и групповые выставки Анастасии Ольховой.',
+  description: 'Персональные и групповые выставки Анастасии Олеховой.',
 }
 
 const typeLabels: Record<string, string> = {

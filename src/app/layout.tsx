@@ -5,13 +5,13 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Анастасия Ольхова — Художник',
-    template: '%s · Анастасия Ольхова',
+    default: 'Анастасия Олехова — Художник',
+    template: '%s · Анастасия Олехова',
   },
   description:
-    'Портфолио художника и иллюстратора Анастасии Ольховой. Акварель, графика, авторские куклы.',
+    'Портфолио художника и иллюстратора Анастасии Олеховой. Акварель, графика, авторские куклы.',
   openGraph: {
-    siteName: 'Анастасия Ольхова',
+    siteName: 'Анастасия Олехова',
     locale: 'ru_RU',
     type: 'website',
   },

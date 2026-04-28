@@ -60,7 +60,7 @@ export default async function HomePage() {
             >
               Анастасия
               <br />
-              <em className="text-crimson not-italic">Ольхова</em>
+              <em className="text-crimson not-italic">Олехова</em>
             </h1>
 
             <p

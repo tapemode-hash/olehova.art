@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Sanity Studio · Ольхова',
+  title: 'Sanity Studio · Олехова',
 }
 
 export default function StudioLayout({ children }: { children: React.ReactNode }) {

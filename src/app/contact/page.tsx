@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Контакт',
-  description: 'Связаться с художником Анастасией Ольховой.',
+  description: 'Связаться с художником Анастасией Олеховой.',
 }
 
 export default function ContactPage() {

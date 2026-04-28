@@ -50,7 +50,7 @@ export function Header() {
               className="text-base tracking-[0.4em] text-gold uppercase"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
-              Ольхова
+              Олехова
             </span>
           </Link>
 
