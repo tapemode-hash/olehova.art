@@ -23,12 +23,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru">
+    <html lang="ru" style={{ colorScheme: 'light', backgroundColor: '#F5F0E8' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="color-scheme" content="light" />
       </head>
-      <body>
+      <body style={{ backgroundColor: '#F5F0E8' }}>
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />
