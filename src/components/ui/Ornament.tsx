@@ -33,7 +33,6 @@ export function SectionHeader({
 }) {
   return (
     <div className={`text-center ${className}`}>
-      <OrnamentDivider />
       <h2 className="section-title">{title}</h2>
       {subtitle && (
         <p

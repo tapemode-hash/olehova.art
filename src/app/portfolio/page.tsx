@@ -20,7 +20,7 @@ export default async function PortfolioPage() {
   const artworks = await getArtworks()
 
   return (
-    <div className="py-16">
+    <div className="pt-6 pb-16">
       <div className="page-container">
         <SectionHeader
           title="Портфолио"

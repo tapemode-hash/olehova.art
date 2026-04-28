@@ -21,11 +21,10 @@ export default async function AboutPage() {
   const about = await getAbout()
 
   return (
-    <div className="py-16">
+    <div className="pt-6 pb-16">
       <div className="page-container">
         {/* Заголовок */}
-        <div className="text-center mb-16">
-          <OrnamentDivider />
+        <div className="text-center mb-12">
           <h1 className="section-title">О художнике</h1>
           <OrnamentDivider />
         </div>

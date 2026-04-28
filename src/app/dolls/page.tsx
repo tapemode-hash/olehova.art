@@ -41,7 +41,7 @@ export default async function DollsPage() {
   const dolls: Doll[] = await getDolls()
 
   return (
-    <div className="py-16">
+    <div className="pt-6 pb-16">
       <div className="page-container">
         <SectionHeader
           title="Авторские куклы"
