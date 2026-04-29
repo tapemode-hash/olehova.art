@@ -8,7 +8,7 @@ export function ContactForm() {
 
   return (
     <form
-      action="mailto:art@olehova.art"
+      action="mailto:olekhova.anastasiya@yandex.ru"
       method="post"
       encType="text/plain"
       className="space-y-6"

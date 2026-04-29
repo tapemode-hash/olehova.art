@@ -47,11 +47,11 @@ export default function ContactPage() {
                     Email
                   </p>
                   <a
-                    href="mailto:art@olehova.art"
+                    href="mailto:olekhova.anastasiya@yandex.ru"
                     className="text-ink hover:text-crimson transition-colors"
                     style={{ fontFamily: "'Lora', Georgia, serif" }}
                   >
-                    art@olehova.art
+                    olekhova.anastasiya@yandex.ru
                   </a>
                 </div>
               </div>
