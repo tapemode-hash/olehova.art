@@ -62,7 +62,7 @@ export default async function HomePage() {
         )}
 
         {/* Текст */}
-        <div className="page-container py-12">
+        <div className="page-container pt-4 pb-12">
           <div className="max-w-2xl">
             <p
               className="text-gold tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in"
