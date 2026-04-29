@@ -24,15 +24,15 @@ export default function ContactPage() {
               className="text-3xl text-ink mb-8"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
-              Открыта к сотрудничеству
+              Буду рада услышать вас
             </h2>
 
             <p
               className="text-ink-light mb-10 leading-relaxed"
               style={{ fontFamily: "'Lora', Georgia, serif", lineHeight: '1.8' }}
             >
-              Если вас интересует приобретение работ, сотрудничество, участие в выставке
-              или вы просто хотите поделиться впечатлениями — напишите мне.
+              Открыта к сотрудничеству. Если вас интересует приобретение работ,
+              участие в выставке или вы просто хотите поделиться впечатлениями — напишите мне.
               Я отвечаю в указанное вами время.
             </p>
 
