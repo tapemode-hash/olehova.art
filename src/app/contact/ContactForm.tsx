@@ -112,6 +112,24 @@ export function ContactForm() {
 
       <div>
         <label
+          htmlFor="time"
+          className="block text-xs tracking-widest uppercase text-gold mb-2"
+          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+        >
+          Удобное время для связи
+        </label>
+        <input
+          id="time"
+          name="time"
+          type="text"
+          className="w-full bg-transparent border-b border-ink/30 focus:border-gold outline-none py-2 text-ink transition-colors duration-200"
+          style={{ fontFamily: "'Lora', Georgia, serif" }}
+          placeholder="например: будни с 10 до 19"
+        />
+      </div>
+
+      <div>
+        <label
           htmlFor="message"
           className="block text-xs tracking-widest uppercase text-gold mb-2"
           style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}

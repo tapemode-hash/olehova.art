@@ -33,7 +33,7 @@ export function Footer() {
                 { href: '/portfolio', label: 'Портфолио' },
                 { href: '/dolls', label: 'Куклы' },
                 { href: '/exhibitions', label: 'Выставки' },
-                { href: '/contact', label: 'Контакт' },
+                { href: '/contact', label: 'Контакты' },
               ].map((item) => (
                 <Link
                   key={item.href}

@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { ContactForm } from './ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Контакт',
+  title: 'Контакты',
   description: 'Связаться с художником Анастасией Олеховой.',
 }
 
@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="pt-6 pb-16">
       <div className="page-container">
         <SectionHeader
-          title="Контакт"
+          title="Контакты"
           subtitle="Напишите мне"
         />
 
@@ -33,7 +33,7 @@ export default function ContactPage() {
             >
               Если вас интересует приобретение работ, сотрудничество, участие в выставке
               или вы просто хотите поделиться впечатлениями — напишите мне.
-              Я отвечаю в течение нескольких дней.
+              Я отвечаю в указанное вами время.
             </p>
 
             <div className="space-y-6">
