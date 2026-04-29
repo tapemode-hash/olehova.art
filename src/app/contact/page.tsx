@@ -14,7 +14,7 @@ export default function ContactPage() {
       <div className="page-container">
         <SectionHeader
           title="Контакты"
-          subtitle="Напишите мне"
+          subtitle="Открыта к сотрудничеству"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16">
