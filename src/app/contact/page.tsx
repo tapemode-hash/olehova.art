@@ -14,7 +14,7 @@ export default function ContactPage() {
       <div className="page-container">
         <SectionHeader
           title="Контакты"
-          subtitle="Открыта к сотрудничеству"
+          subtitle="Напишите мне"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16">
@@ -24,7 +24,7 @@ export default function ContactPage() {
               className="text-3xl text-ink mb-8"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
-              Буду рада услышать вас
+              Открыта к сотрудничеству
             </h2>
 
             <p
