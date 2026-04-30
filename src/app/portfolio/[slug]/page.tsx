@@ -116,15 +116,6 @@ export default async function ArtworkPage({ params }: { params: { slug: string }
                   <dd style={{ fontFamily: "'Lora', Georgia, serif" }}>{artwork.dimensions} см</dd>
                 </div>
               )}
-              <div className="flex gap-4">
-                <dt className="text-sm text-gold tracking-widest uppercase w-28 shrink-0"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                  Техника
-                </dt>
-                <dd style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                  {techniqueLabels[artwork.technique] ?? artwork.technique}
-                </dd>
-              </div>
               {artwork.price && (
                 <div className="flex gap-4">
                   <dt className="text-sm text-gold tracking-widest uppercase w-28 shrink-0"
