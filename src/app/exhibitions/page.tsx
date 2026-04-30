@@ -1,3 +1,5 @@
+export const revalidate = 60
+
 import { client, urlFor, queries } from '@/lib/sanity'
 import Image from 'next/image'
 import { SectionHeader, OrnamentDivider } from '@/components/ui/Ornament'
