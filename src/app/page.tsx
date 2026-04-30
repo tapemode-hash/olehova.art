@@ -161,13 +161,13 @@ export default async function HomePage() {
                   href={`/portfolio/${artwork.slug.current}`}
                   className={`card-museum group block ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
                 >
-                  <div className={`relative overflow-hidden ${index === 0 ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[3/4]' : 'aspect-[3/4]'}`}>
+                  <div className={`relative overflow-hidden bg-parchment ${index === 0 ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[3/4]' : 'aspect-[3/4]'}`}>
                     {artwork.image && (
                       <Image
                         src={urlFor(artwork.image).width(800).height(1067).url()}
                         alt={artwork.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-contain transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     )}

@@ -85,13 +85,13 @@ export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
               href={`/portfolio/${artwork.slug.current}`}
               className="card-museum group block"
             >
-              <div className="relative aspect-[3/4] overflow-hidden bg-parchment-dark">
+              <div className="relative aspect-[3/4] overflow-hidden bg-parchment">
                 {artwork.image ? (
                   <Image
                     src={urlFor(artwork.image).width(600).height(800).url()}
                     alt={artwork.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 ) : (
