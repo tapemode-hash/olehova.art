@@ -107,8 +107,8 @@ export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
                     <div>
                       <p className="text-gold/80 text-xs tracking-widest uppercase mb-1"
                         style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                        {techniqueLabels[artwork.technique] ?? artwork.technique}
-                        {artwork.year ? ` · ${artwork.year}` : ''}
+                        {active === 'all' && (techniqueLabels[artwork.technique] ?? artwork.technique)}
+                        {artwork.year ? (active === 'all' ? ` · ${artwork.year}` : `${artwork.year}`) : ''}
                       </p>
                       <h3 className="text-white text-2xl leading-tight"
                         style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}>
@@ -150,8 +150,8 @@ export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
                 </h3>
                 <p className="text-sm text-ink-light mt-0.5"
                   style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                  {techniqueLabels[artwork.technique] ?? artwork.technique}
-                  {artwork.year ? ` · ${artwork.year}` : ''}
+                  {active === 'all' && (techniqueLabels[artwork.technique] ?? artwork.technique)}
+                  {artwork.year ? (active === 'all' ? ` · ${artwork.year}` : `${artwork.year}`) : ''}
                   {artwork.price ? ` · ${artwork.price.toLocaleString('ru-RU')} ₽` : ''}
                 </p>
               </div>
