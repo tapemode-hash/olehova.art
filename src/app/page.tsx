@@ -13,6 +13,14 @@ async function getFeaturedArtworks() {
   }
 }
 
+async function getAboutPhoto() {
+  try {
+    return await client.fetch(`*[_type == "about"][0] { photo }`)
+  } catch {
+    return null
+  }
+}
+
 async function getHeroImage() {
   try {
     return await client.fetch(
@@ -35,7 +43,7 @@ const techniqueLabels: Record<string, string> = {
 }
 
 export default async function HomePage() {
-  const [artworks, heroData] = await Promise.all([getFeaturedArtworks(), getHeroImage()])
+  const [artworks, heroData, aboutData] = await Promise.all([getFeaturedArtworks(), getHeroImage(), getAboutPhoto()])
 
   return (
     <>
@@ -91,15 +99,27 @@ export default async function HomePage() {
         <div className="page-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="aspect-[3/4] bg-parchment border border-gold/30 flex items-center justify-center">
-                <p
-                  className="text-gold/30 text-8xl select-none"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                  aria-hidden="true"
-                >
-                  ❧
-                </p>
-              </div>
+              {aboutData?.photo ? (
+                <div className="relative aspect-[3/4] overflow-hidden border border-gold/30">
+                  <Image
+                    src={urlFor(aboutData.photo).width(700).height(933).url()}
+                    alt="Анастасия Олехова"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              ) : (
+                <div className="aspect-[3/4] bg-parchment border border-gold/30 flex items-center justify-center">
+                  <p
+                    className="text-gold/30 text-8xl select-none"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    aria-hidden="true"
+                  >
+                    ❧
+                  </p>
+                </div>
+              )}
               <div
                 className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 -z-10"
                 aria-hidden="true"
