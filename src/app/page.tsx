@@ -54,7 +54,7 @@ export default async function HomePage() {
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(to bottom, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.5) 40%, rgba(245,240,232,0.0) 65%, rgba(245,240,232,0.8) 90%, rgba(245,240,232,1) 100%)'
+                background: 'linear-gradient(to bottom, rgba(245,240,232,1) 0%, rgba(245,240,232,0.95) 25%, rgba(245,240,232,0.3) 55%, rgba(245,240,232,0.8) 88%, rgba(245,240,232,1) 100%)'
               }}
             />
           </>
@@ -63,7 +63,7 @@ export default async function HomePage() {
         )}
 
         {/* Текст поверх — вверху */}
-        <div className="absolute top-0 left-0 right-0 page-container pt-28 md:pt-32">
+        <div className="absolute top-0 left-0 right-0 page-container pt-24 md:pt-28">
           <p
             className="text-gold tracking-[0.4em] uppercase text-sm mb-4 animate-fade-in"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
