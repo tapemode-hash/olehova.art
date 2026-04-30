@@ -63,7 +63,7 @@ export default async function HomePage() {
         )}
 
         {/* Текст поверх — вверху */}
-        <div className="absolute top-0 left-0 right-0 page-container pt-24 md:pt-28">
+        <div className="absolute top-0 left-0 right-0 page-container pt-20 md:pt-22">
           <p
             className="text-gold tracking-[0.4em] uppercase text-sm mb-4 animate-fade-in"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
