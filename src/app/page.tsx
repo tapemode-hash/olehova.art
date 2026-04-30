@@ -39,12 +39,11 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* Картина — полная ширина сверху */}
-        {heroData?.image && (
-          <div className="relative w-full" style={{ height: '40vh' }}>
+      <section className="relative min-h-screen overflow-hidden">
+        {heroData?.image ? (
+          <>
             <Image
-              src={urlFor(heroData.image).width(1600).height(900).url()}
+              src={urlFor(heroData.image).width(1800).height(1200).url()}
               alt="Работа Анастасии Олеховой"
               fill
               className="object-cover"
@@ -55,56 +54,39 @@ export default async function HomePage() {
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(to bottom, rgba(245,240,232,0.05) 0%, rgba(245,240,232,0.0) 50%, rgba(245,240,232,0.85) 85%, rgba(245,240,232,1) 100%)'
+                background: 'linear-gradient(to bottom, rgba(245,240,232,0.1) 0%, rgba(245,240,232,0.0) 30%, rgba(245,240,232,0.6) 70%, rgba(245,240,232,1) 100%)'
               }}
             />
-          </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-parchment" />
         )}
 
-        {/* Текст */}
-        <div className="page-container pt-4 pb-12">
-          <div className="max-w-2xl">
-            <p
-              className="text-gold tracking-[0.4em] uppercase text-sm mb-6 animate-fade-in"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              Художник · Иллюстратор
-            </p>
-
-            <h1
-              className="text-6xl md:text-8xl lg:text-9xl text-ink mb-8 animate-slide-up"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontWeight: 300,
-                lineHeight: 1.05,
-              }}
-            >
-              Анастасия
-              <br />
-              <em className="text-crimson not-italic">Олехова</em>
-            </h1>
-
-            <p
-              className="text-xl md:text-2xl text-ink-light italic mb-12 max-w-xl animate-slide-up"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              «Каждая работа — это путешествие в мир, где время течёт иначе»
-            </p>
-
-            <div className="flex flex-wrap gap-4 animate-fade-in">
-              <Link href="/about" className="btn-gold">
-                О художнике
-              </Link>
-              <Link href="/portfolio" className="btn-primary">
-                Портфолио
-              </Link>
-            </div>
+        {/* Текст поверх — внизу */}
+        <div className="absolute bottom-0 left-0 right-0 page-container pb-16 md:pb-24">
+          <p
+            className="text-gold tracking-[0.4em] uppercase text-sm mb-4 animate-fade-in"
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          >
+            Художник · Иллюстратор
+          </p>
+          <h1
+            className="text-7xl md:text-9xl lg:text-[10rem] text-ink mb-6 animate-slide-up"
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300, lineHeight: 1.0 }}
+          >
+            Анастасия
+            <br />
+            <em className="text-crimson not-italic">Олехова</em>
+          </h1>
+          <div className="flex flex-wrap gap-4 animate-fade-in">
+            <Link href="/about" className="btn-gold">О художнике</Link>
+            <Link href="/portfolio" className="btn-primary">Портфолио</Link>
           </div>
         </div>
       </section>
 
       {/* О художнике — тизер */}
-      <section className="py-20 bg-parchment-dark">
+      <section className="py-28 bg-parchment-dark">
         <div className="page-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative">
@@ -140,11 +122,11 @@ export default async function HomePage() {
 
       {/* Избранные работы */}
       {artworks.length > 0 && (
-        <section className="py-20">
+        <section className="py-28">
           <div className="page-container">
             <SectionHeader title="Избранные работы" subtitle="Из последних серий" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
               {artworks.slice(0, 6).map((artwork: {
                 _id: string
                 title: string
@@ -152,41 +134,39 @@ export default async function HomePage() {
                 technique: string
                 year: number
                 image: object
-              }) => (
+              }, index: number) => (
                 <Link
                   key={artwork._id}
                   href={`/portfolio/${artwork.slug.current}`}
-                  className="card-artwork group block"
+                  className={`card-museum group block ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
                 >
-                  <div className="relative aspect-[3/4] overflow-hidden">
+                  <div className={`relative overflow-hidden ${index === 0 ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[3/4]' : 'aspect-[3/4]'}`}>
                     {artwork.image && (
                       <Image
-                        src={urlFor(artwork.image).width(600).height(800).url()}
+                        src={urlFor(artwork.image).width(800).height(1067).url()}
                         alt={artwork.title}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     )}
-                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-300" />
-                  </div>
-                  <div className="p-4">
-                    <h3
-                      className="text-xl text-ink"
-                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                    >
-                      {artwork.title}
-                    </h3>
-                    <p className="text-sm text-ink-light mt-1" style={{ fontFamily: "'Lora', Georgia, serif" }}>
-                      {techniqueLabels[artwork.technique] ?? artwork.technique}
-                      {artwork.year ? ` · ${artwork.year}` : ''}
-                    </p>
+                    <div className="card-museum-overlay">
+                      <p className="text-gold/80 text-xs tracking-widest uppercase mb-1"
+                        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                        {techniqueLabels[artwork.technique] ?? artwork.technique}
+                        {artwork.year ? ` · ${artwork.year}` : ''}
+                      </p>
+                      <h3 className="text-white text-2xl"
+                        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}>
+                        {artwork.title}
+                      </h3>
+                    </div>
                   </div>
                 </Link>
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <Link href="/portfolio" className="btn-primary">
                 Все работы
               </Link>
@@ -212,7 +192,7 @@ export default async function HomePage() {
       )}
 
       {/* Куклы — тизер */}
-      <section className="py-20">
+      <section className="py-28">
         <div className="page-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
@@ -247,11 +227,11 @@ export default async function HomePage() {
       </section>
 
       {/* Цитата */}
-      <section className="py-20 bg-parchment-dark">
-        <div className="page-container text-center max-w-2xl mx-auto">
+      <section className="py-28 bg-parchment-dark">
+        <div className="page-container text-center max-w-3xl mx-auto">
           <OrnamentDivider />
           <blockquote
-            className="text-2xl md:text-3xl italic text-ink mb-8"
+            className="text-3xl md:text-4xl lg:text-5xl italic text-ink mb-8 leading-snug"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}
           >
             Искусство — это язык, на котором душа разговаривает с вечностью

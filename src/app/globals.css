@@ -59,8 +59,8 @@
 
   .section-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 400;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
     color: #1C1410;
     letter-spacing: 0.04em;
   }
@@ -126,14 +126,14 @@
   .card-artwork {
     position: relative;
     overflow: hidden;
-    background: #E8E0CC;
+    background: transparent;
     border: 1px solid rgba(201, 168, 76, 0.2);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
   }
 
   .card-artwork:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(28, 20, 16, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(28, 20, 16, 0.12);
   }
 
   .card-artwork::before {
@@ -148,6 +148,28 @@
 
   .card-artwork:hover::before {
     border-color: rgba(201, 168, 76, 0.8);
+  }
+
+  .card-museum {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-museum-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(28,20,16,0.82) 0%, rgba(28,20,16,0.3) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .card-museum:hover .card-museum-overlay {
+    opacity: 1;
   }
 
   .nav-link {

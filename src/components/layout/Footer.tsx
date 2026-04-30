@@ -2,13 +2,13 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-gold/30 bg-parchment-dark">
-      <div className="page-container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer className="mt-0 border-t border-gold/30 bg-parchment-dark">
+      <div className="page-container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Подпись */}
           <div>
             <p
-              className="text-3xl text-ink mb-1"
+              className="text-4xl text-ink mb-1"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontWeight: 300 }}
             >
               Анастасия Олехова
