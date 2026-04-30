@@ -164,7 +164,7 @@ export default async function HomePage() {
                   <div className={`relative overflow-hidden bg-parchment ${index === 0 ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[3/4]' : 'aspect-[3/4]'}`}>
                     {artwork.image && (
                       <Image
-                        src={urlFor(artwork.image).width(800).height(1067).url()}
+                        src={urlFor(artwork.image).width(800).url()}
                         alt={artwork.title}
                         fill
                         className="object-contain transition-transform duration-700 group-hover:scale-105"

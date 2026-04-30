@@ -59,16 +59,15 @@ export default async function ArtworkPage({ params }: { params: { slug: string }
           <div className="relative">
             <div className="card-artwork overflow-hidden">
               {artwork.image ? (
-                <div className="relative aspect-[3/4]">
-                  <Image
-                    src={urlFor(artwork.image).width(800).height(1067).url()}
-                    alt={artwork.title}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
+                <Image
+                  src={urlFor(artwork.image).width(1200).url()}
+                  alt={artwork.title}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  style={{ width: '100%', height: 'auto' }}
+                  priority
+                />
               ) : (
                 <div className="aspect-[3/4] flex items-center justify-center text-gold/30 text-8xl bg-parchment-dark">
                   ❧

@@ -88,7 +88,7 @@ export function PortfolioFilter({ artworks }: { artworks: Artwork[] }) {
               <div className="relative aspect-[3/4] overflow-hidden bg-parchment">
                 {artwork.image ? (
                   <Image
-                    src={urlFor(artwork.image).width(600).height(800).url()}
+                    src={urlFor(artwork.image).width(600).url()}
                     alt={artwork.title}
                     fill
                     className="object-contain transition-transform duration-700 group-hover:scale-105"
