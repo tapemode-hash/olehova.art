@@ -23,13 +23,6 @@ async function getHeroImage() {
   }
 }
 
-async function getAboutPhoto() {
-  try {
-    return await client.fetch(`*[_type == "about"][0] { photo }`)
-  } catch {
-    return null
-  }
-}
 
 const techniqueLabels: Record<string, string> = {
   watercolor: 'Акварель',
@@ -42,8 +35,7 @@ const techniqueLabels: Record<string, string> = {
 }
 
 export default async function HomePage() {
-  const [artworks, heroData, aboutData] = await Promise.all([getFeaturedArtworks(), getHeroImage(), getAboutPhoto()])
-  const aboutImage = aboutData?.photo ?? artworks[1]?.image ?? null
+  const [artworks, heroData] = await Promise.all([getFeaturedArtworks(), getHeroImage()])
 
   return (
     <>
@@ -95,31 +87,19 @@ export default async function HomePage() {
       </section>
 
       {/* О художнике — тизер */}
-      <section className="py-28 bg-ink">
+      <section className="py-28 bg-parchment-dark">
         <div className="page-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              {aboutImage ? (
-                <div className="overflow-hidden border border-gold/30 relative aspect-[3/4]">
-                  <Image
-                    src={urlFor(aboutImage).width(700).height(933).url()}
-                    alt="Анастасия Олехова"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              ) : (
-                <div className="aspect-[3/4] border border-gold/30 flex items-center justify-center">
-                  <p
-                    className="text-gold/30 text-8xl select-none"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                    aria-hidden="true"
-                  >
-                    ❧
-                  </p>
-                </div>
-              )}
+              <div className="aspect-[3/4] bg-parchment border border-gold/30 flex items-center justify-center">
+                <p
+                  className="text-gold/30 text-8xl select-none"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  aria-hidden="true"
+                >
+                  ❧
+                </p>
+              </div>
               <div
                 className="absolute -bottom-4 -right-4 w-full h-full border border-gold/20 -z-10"
                 aria-hidden="true"
@@ -127,8 +107,8 @@ export default async function HomePage() {
             </div>
             <div>
               <OrnamentDivider text="✦" />
-              <h2 className="section-title mb-6" style={{ color: '#F5F0E8' }}>О художнике</h2>
-              <p className="mb-8" style={{ fontFamily: "'Lora', Georgia, serif", color: '#C8B89A', lineHeight: '1.8' }}>
+              <h2 className="section-title mb-6">О художнике</h2>
+              <p className="mb-8" style={{ fontFamily: "'Lora', Georgia, serif", color: '#3D2B1F', lineHeight: '1.8' }}>
                 Анастасия Олехова — художник и иллюстратор, работающий в духе
                 старинной книжной иллюстрации. В её работах живут персонажи
                 из другого времени — задумчивые, хрупкие и бесконечно живые.
