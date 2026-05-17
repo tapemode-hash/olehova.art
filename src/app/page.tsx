@@ -155,13 +155,13 @@ export default async function HomePage() {
                 technique: string
                 year: number
                 image: object
-              }, index: number) => (
+              }) => (
                 <Link
                   key={artwork._id}
                   href={`/portfolio/${artwork.slug.current}`}
-                  className={`card-museum group block ${index === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+                  className="card-museum group block"
                 >
-                  <div className={`relative overflow-hidden bg-parchment ${index === 0 ? 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-[3/4]' : 'aspect-[3/4]'}`}>
+                  <div className="relative overflow-hidden bg-parchment aspect-[3/4]">
                     {artwork.image && (
                       <Image
                         src={urlFor(artwork.image).width(800).url()}
