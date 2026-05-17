@@ -161,7 +161,7 @@ export default async function HomePage() {
                   href={`/portfolio/${artwork.slug.current}`}
                   className="card-museum group block"
                 >
-                  <div className="relative overflow-hidden bg-parchment aspect-[3/4]">
+                  <div className="relative overflow-hidden bg-parchment-dark border border-gold/20 aspect-[3/4]">
                     {artwork.image && (
                       <Image
                         src={urlFor(artwork.image).width(800).url()}
