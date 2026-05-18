@@ -2,10 +2,6 @@
 
 import { useState } from 'react'
 
-const SBP_PHONE = '89642955291'
-const SBP_PHONE_FORMATTED = '8 (964) 295-52-91'
-const SBP_BANK = 'Тинькофф'
-
 interface BuyModalProps {
   title: string
   price: number
@@ -13,10 +9,30 @@ interface BuyModalProps {
 
 export function BuyModal({ title, price }: BuyModalProps) {
   const [open, setOpen] = useState(false)
+  const [phone, setPhone] = useState<string | null>(null)
+  const [bank, setBank] = useState<string>('Тинькофф')
   const [copied, setCopied] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const reveal = async () => {
+    if (phone) return
+    setLoading(true)
+    try {
+      const res = await fetch('/api/sbp')
+      const data = await res.json()
+      setPhone(data.phone)
+      setBank(data.bank)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const formatPhone = (p: string) =>
+    p.replace(/(\d)(\d{3})(\d{3})(\d{2})(\d{2})/, '$1 ($2) $3-$4-$5')
 
   const copy = () => {
-    navigator.clipboard.writeText(SBP_PHONE)
+    if (!phone) return
+    navigator.clipboard.writeText(phone)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -89,38 +105,50 @@ export function BuyModal({ title, price }: BuyModalProps) {
                 >
                   Номер телефона · СБП
                 </p>
-                <div className="flex items-center gap-3">
-                  <p
-                    className="text-xl text-ink"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                  >
-                    {SBP_PHONE_FORMATTED}
-                  </p>
+                {phone ? (
+                  <div className="flex items-center gap-3">
+                    <p
+                      className="text-xl text-ink"
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      {formatPhone(phone)}
+                    </p>
+                    <button
+                      onClick={copy}
+                      className={`text-xs tracking-widest uppercase px-3 py-1 border transition-all duration-200 ${
+                        copied
+                          ? 'bg-gold border-gold text-ink'
+                          : 'border-gold/50 text-gold hover:bg-gold hover:text-ink'
+                      }`}
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      {copied ? '✓ Скопировано' : 'Копировать'}
+                    </button>
+                  </div>
+                ) : (
                   <button
-                    onClick={copy}
-                    className={`text-xs tracking-widest uppercase px-3 py-1 border transition-all duration-200 ${
-                      copied
-                        ? 'bg-gold border-gold text-ink'
-                        : 'border-gold/50 text-gold hover:bg-gold hover:text-ink'
-                    }`}
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    onClick={reveal}
+                    disabled={loading}
+                    className="btn-gold text-sm"
                   >
-                    {copied ? '✓ Скопировано' : 'Копировать'}
+                    {loading ? 'Загрузка…' : 'Показать номер'}
                   </button>
-                </div>
+                )}
               </div>
 
-              <div>
-                <p
-                  className="text-xs tracking-widest uppercase text-gold mb-1"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                >
-                  Банк получателя
-                </p>
-                <p style={{ fontFamily: "'Lora', Georgia, serif" }} className="text-ink">
-                  {SBP_BANK}
-                </p>
-              </div>
+              {phone && (
+                <div>
+                  <p
+                    className="text-xs tracking-widest uppercase text-gold mb-1"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  >
+                    Банк получателя
+                  </p>
+                  <p style={{ fontFamily: "'Lora', Georgia, serif" }} className="text-ink">
+                    {bank}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="hr-ornate mx-6" />
@@ -130,13 +158,13 @@ export function BuyModal({ title, price }: BuyModalProps) {
               className="px-6 space-y-2 text-sm text-ink-light"
               style={{ fontFamily: "'Lora', Georgia, serif", lineHeight: 1.7 }}
             >
-              <li>1. Откройте приложение банка → Переводы → По номеру СБП</li>
-              <li>2. Введите номер <strong className="text-ink">{SBP_PHONE_FORMATTED}</strong> и сумму <strong className="text-ink">{price.toLocaleString('ru-RU')} ₽</strong></li>
+              <li>1. Нажмите «Показать номер» и скопируйте его</li>
+              <li>2. Откройте приложение банка → Переводы → По номеру СБП</li>
+              <li>3. Введите номер и сумму <strong className="text-ink">{price.toLocaleString('ru-RU')} ₽</strong></li>
               <li>
-                3. В комментарии к переводу напишите:{' '}
-                <em className="text-ink">«{title}»</em>
+                4. В комментарии напишите: <em className="text-ink">«{title}»</em>
               </li>
-              <li>4. После оплаты нажмите кнопку ниже — я свяжусь с вами</li>
+              <li>5. После оплаты нажмите кнопку ниже</li>
             </ol>
 
             {/* Кнопка подтверждения */}
