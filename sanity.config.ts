@@ -18,6 +18,7 @@ export default defineConfig({
             S.documentTypeListItem('artwork').title('Работы'),
             S.documentTypeListItem('doll').title('Куклы'),
             S.documentTypeListItem('exhibition').title('Выставки'),
+            S.documentTypeListItem('review').title('Отзывы'),
             S.listItem()
               .title('О художнике')
               .child(

@@ -2,5 +2,6 @@ import { artwork } from './artwork'
 import { doll } from './doll'
 import { exhibition } from './exhibition'
 import { about } from './about'
+import { review } from './review'
 
-export const schemaTypes = [artwork, doll, exhibition, about]
+export const schemaTypes = [artwork, doll, exhibition, about, review]

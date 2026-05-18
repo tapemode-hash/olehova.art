@@ -10,6 +10,7 @@ const navItems = [
   { href: '/portfolio', label: 'Портфолио' },
   { href: '/dolls', label: 'Куклы' },
   { href: '/exhibitions', label: 'Выставки' },
+  { href: '/reviews', label: 'Отзывы' },
   { href: '/contact', label: 'Контакты' },
 ]
 
