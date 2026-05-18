@@ -131,12 +131,6 @@ export function ReviewsClient({ initial }: { initial: Review[] }) {
             >
               Он появится на сайте после проверки.
             </p>
-            <button
-              onClick={() => setStatus('idle')}
-              className="btn-gold mt-6 text-sm"
-            >
-              Оставить ещё один
-            </button>
           </div>
         ) : (
           <form onSubmit={submit} className="space-y-6">
