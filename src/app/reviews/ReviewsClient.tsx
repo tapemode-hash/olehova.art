@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { OrnamentDivider } from '@/components/ui/Ornament'
 
 interface Review {
@@ -24,7 +24,7 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export function ReviewsClient({ initial }: { initial: Review[] }) {
-  const [reviews, setReviews] = useState<Review[]>(initial)
+  const [reviews] = useState<Review[]>(initial)
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(5)
