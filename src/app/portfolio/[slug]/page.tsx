@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { BuyModal } from '@/components/ui/BuyModal'
 
 const techniqueLabels: Record<string, string> = {
   watercolor: 'Акварель',
@@ -152,12 +153,16 @@ export default async function ArtworkPage({ params }: { params: { slug: string }
 
             {artwork.available !== false && (
               <div className="mt-10">
-                <Link
-                  href={`/contact?work=${encodeURIComponent(artwork.title)}`}
-                  className="btn-primary"
-                >
-                  Связаться по поводу работы
-                </Link>
+                {artwork.price ? (
+                  <BuyModal title={artwork.title} price={artwork.price} />
+                ) : (
+                  <Link
+                    href={`/contact?work=${encodeURIComponent(artwork.title)}`}
+                    className="btn-primary"
+                  >
+                    Связаться по поводу работы
+                  </Link>
+                )}
               </div>
             )}
           </div>

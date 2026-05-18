@@ -5,8 +5,18 @@ import { useSearchParams } from 'next/navigation'
 export function ContactForm() {
   const searchParams = useSearchParams()
   const workParam = searchParams.get('work') ?? ''
+  const paid = searchParams.get('paid') === 'true'
 
   return (
+    <>
+      {paid && workParam && (
+        <div
+          className="mb-8 p-4 border border-gold/40 bg-parchment-dark text-sm"
+          style={{ fontFamily: "'Lora', Georgia, serif", color: '#3D2B1F' }}
+        >
+          Вы оплатили работу <strong>«{workParam}»</strong> через СБП. Оставьте контакты — я свяжусь с вами для подтверждения и отправки.
+        </div>
+      )}
     <form
       action="mailto:olekhova.anastasiya@yandex.ru"
       method="post"
@@ -141,6 +151,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          defaultValue={paid && workParam ? `Оплатил по СБП за работу «${workParam}». Прошу подтвердить получение и сообщить детали доставки.` : ''}
           className="w-full bg-transparent border border-ink/20 focus:border-gold outline-none p-3 text-ink resize-none transition-colors duration-200"
           style={{ fontFamily: "'Lora', Georgia, serif" }}
         />
@@ -152,5 +163,6 @@ export function ContactForm() {
         </button>
       </div>
     </form>
+    </>
   )
 }
